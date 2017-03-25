@@ -1,0 +1,15 @@
+ros-jade-explore-lite (1.0.1-0trusty) trusty; urgency=high
+
+  * update documentation
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Fri, 24 Mar 2017 23:00:00 -0000
+
+ros-jade-explore-lite (1.0.0-0trusty) trusty; urgency=high
+
+  * initial release
+  * Contributors: Jiri Horner, duhadway-bosch, pitzer
+
+ -- Jiri Horner <laeqten@gmail.com>  Tue, 10 May 2016 22:00:00 -0000
+
+
