@@ -1,0 +1,12 @@
+Source: ros-jade-multirobot-map-merge
+Section: misc
+Priority: extra
+Maintainer: Jiri Horner <laeqten@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-catkin, ros-jade-geometry-msgs, ros-jade-map-msgs, ros-jade-nav-msgs, ros-jade-opencv3, ros-jade-roscpp, ros-jade-roslaunch, ros-jade-rosunit, ros-jade-tf
+Homepage: http://wiki.ros.org/multirobot_map_merge
+Standards-Version: 3.9.2
+
+Package: ros-jade-multirobot-map-merge
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-opencv3, ros-jade-roscpp, ros-jade-tf
+Description: Merging multiple maps without knowledge of initial positions of robots.
