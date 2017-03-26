@@ -15,7 +15,7 @@
  *     copyright notice, this list of conditions and the following
  *     disclaimer in the documentation and/or other materials provided
  *     with the distribution.
- *   * Neither the name of the author nor the names of its
+ *   * Neither the name of the Jiri Horner nor the names of its
  *     contributors may be used to endorse or promote products derived
  *     from this software without specific prior written permission.
  *
@@ -34,33 +34,52 @@
  *
  *********************************************************************/
 
-#ifndef FEATURES_MATCHER_H_
-#define FEATURES_MATCHER_H_
+#include <combine_grids/grid_warper.h>
 
-#include <opencv2/stitching/detail/matchers.hpp>
+#include <opencv2/stitching/detail/warpers.hpp>
+
+#include <ros/assert.h>
 
 namespace combine_grids
 {
 namespace internal
 {
-/** @brief Features matcher similar to cv::detail::BestOf2NearestMatcher which
-finds two best matches for each feature and leaves the best one only if the
-ratio between descriptor distances is greater than the threshold match_conf.
-
-Unlike cv::detail::BestOf2NearestMatcher this matcher is using affine
-transformation to estimate homography.
-
-@sa cv::detail::FeaturesMatcher cv::detail::BestOf2NearestMatcher
- */
-class AffineBestOf2NearestMatcher : public cv::detail::BestOf2NearestMatcher
+cv::Rect GridWarper::warp(const cv::Mat& grid, const cv::Mat& transform,
+                          cv::Mat& warped_grid)
 {
-protected:
-  void match(const cv::detail::ImageFeatures &features1,
-             const cv::detail::ImageFeatures &features2,
-             cv::detail::MatchesInfo &matches_info);
-};
+  ROS_ASSERT(transform.type() == CV_64F);
+  cv::Mat H;
+  invertAffineTransform(transform.rowRange(0, 2), H);
+  cv::Rect roi = warpRoi(grid, H);
+  // shift top left corner for warp affine (otherwise the image is cropped)
+  H.at<double>(0, 2) -= roi.tl().x;
+  H.at<double>(1, 2) -= roi.tl().y;
+  warpAffine(grid, warped_grid, H, roi.size(), cv::INTER_NEAREST,
+             cv::BORDER_CONSTANT,
+             cv::Scalar::all(255) /* this is -1 for signed char */);
+  ROS_ASSERT(roi.size() == warped_grid.size());
+
+  return roi;
+}
+
+cv::Rect GridWarper::warpRoi(const cv::Mat& grid, const cv::Mat& transform)
+{
+  cv::Ptr<cv::detail::PlaneWarper> warper =
+      cv::makePtr<cv::detail::PlaneWarper>();
+  cv::Mat H;
+  transform.convertTo(H, CV_32F);
+
+  // separate rotation and translation for plane warper
+  // 3D translation
+  cv::Mat T = cv::Mat::zeros(3, 1, CV_32F);
+  H.colRange(2, 3).rowRange(0, 2).copyTo(T.rowRange(0, 2));
+  // 3D rotation
+  cv::Mat R = cv::Mat::eye(3, 3, CV_32F);
+  H.colRange(0, 2).copyTo(R.rowRange(0, 2).colRange(0, 2));
+
+  return warper->warpRoi(grid.size(), cv::Mat::eye(3, 3, CV_32F), R, T);
+}
 
 }  // namespace internal
-}  // namespace combine_grids
 
-#endif  // FEATURES_MATCHER_H_
+}  // namespace combine_grids

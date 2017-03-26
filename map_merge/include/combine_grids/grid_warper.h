@@ -2,7 +2,6 @@
  *
  * Software License Agreement (BSD License)
  *
- *  Copyright (c) 2008, Robert Bosch LLC.
  *  Copyright (c) 2015-2016, Jiri Horner.
  *  All rights reserved.
  *
@@ -34,79 +33,28 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *
  *********************************************************************/
-#ifndef NAV_EXPLORE_H_
-#define NAV_EXPLORE_H_
 
-#include <memory>
-#include <mutex>
-#include <string>
-#include <vector>
+#ifndef GRID_WARPER_H_
+#define GRID_WARPER_H_
 
-#include <actionlib/client/simple_action_client.h>
-#include <geometry_msgs/PoseStamped.h>
-#include <move_base_msgs/MoveBaseAction.h>
-#include <navfn/navfn_ros.h>
-#include <ros/ros.h>
-#include <visualization_msgs/MarkerArray.h>
+#include <opencv2/core/utility.hpp>
 
-#include <explore/costmap_client.h>
-#include <explore/explore_frontier.h>
-
-namespace explore
+namespace combine_grids
 {
-/**
- * @class Explore
- * @brief A class adhering to the robot_actions::Action interface that moves the
- * robot base to explore its environment.
- */
-class Explore
+namespace internal
+{
+class GridWarper
 {
 public:
-  Explore();
-
-  void execute();
-
-  void spin();
+  cv::Rect warp(const cv::Mat& grid, const cv::Mat& transform,
+                cv::Mat& warped_grid);
 
 private:
-  /**
-   * @brief  Make a global plan
-   */
-  void makePlan();
-
-  /**
-   * @brief  Publish a frontiers as markers
-   */
-  void publishFrontiers();
-
-  void reachedGoal(const actionlib::SimpleClientGoalState& status,
-                   const move_base_msgs::MoveBaseResultConstPtr& result,
-                   const geometry_msgs::PoseStamped& frontier_goal);
-
-  bool goalOnBlacklist(const geometry_msgs::PoseStamped& goal);
-
-  ros::NodeHandle private_nh_;
-  ros::NodeHandle relative_nh_;
-  ros::Publisher marker_array_publisher_;
-  tf::TransformListener tf_listener_;
-
-  Costmap2DClient costmap_client_;
-  navfn::NavfnROS planner_;
-  actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>
-      move_base_client_;
-  ExploreFrontier explorer_;
-  std::mutex planning_mutex_;
-
-  tf::Stamped<tf::Pose> global_pose_;
-  double planner_frequency_;
-  std::vector<geometry_msgs::PoseStamped> frontier_blacklist_;
-  geometry_msgs::PoseStamped prev_goal_;
-  size_t prev_plan_size_;
-  double time_since_progress_, progress_timeout_;
-  double potential_scale_, orientation_scale_, gain_scale_;
-  bool done_exploring_;
-  bool visualize_;
+  cv::Rect warpRoi(const cv::Mat& grid, const cv::Mat& transform);
 };
-}
 
-#endif
+}  // namespace internal
+
+}  // namespace combine_grids
+
+#endif  // GRID_WARPER_H_
