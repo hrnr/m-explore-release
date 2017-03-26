@@ -1,0 +1,24 @@
+ros-kinetic-explore-lite (2.0.0-1wily) wily; urgency=high
+
+  * explore: migrate to package format 2
+  * explore: remove internal version of navfn_ros
+    * my changes are included in the ros since kinetic
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Sat, 25 Mar 2017 23:00:00 -0000
+
+ros-kinetic-explore-lite (1.0.1-1wily) wily; urgency=high
+
+  * update documentation
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Fri, 24 Mar 2017 23:00:00 -0000
+
+ros-kinetic-explore-lite (1.0.0-1wily) wily; urgency=high
+
+  * initial release
+  * Contributors: Jiri Horner, duhadway-bosch, pitzer
+
+ -- Jiri Horner <laeqten@gmail.com>  Tue, 10 May 2016 22:00:00 -0000
+
+
