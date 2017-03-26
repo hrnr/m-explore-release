@@ -1,0 +1,28 @@
+ros-kinetic-multirobot-map-merge (2.0.0-0jessie) jessie; urgency=high
+
+  * map_merge: upgrade to package format 2
+  * node completely rewritten based on my work included in opencv
+  * uses more reliable features by default -> more robust merging
+  * known_init_poses is now by default false to make it easy to start for new users
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Sat, 25 Mar 2017 23:00:00 -0000
+
+ros-kinetic-multirobot-map-merge (1.0.1-0jessie) jessie; urgency=high
+
+  * map_merge: use inverted tranform
+    * transform needs to be inverted before using
+  * map_merge: change package description
+    * we support merging with unknown initial positions
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Fri, 24 Mar 2017 23:00:00 -0000
+
+ros-kinetic-multirobot-map-merge (1.0.0-0jessie) jessie; urgency=high
+
+  * initial release
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Tue, 10 May 2016 22:00:00 -0000
+
+
