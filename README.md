@@ -1,3 +1,28 @@
+## m_explore (kinetic) - 2.1.0-0
+
+The packages in the `m_explore` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release m_explore --track kinetic --rosdistro kinetic` on `Mon, 30 Oct 2017 17:22:42 -0000`
+
+These packages were released:
+- `explore_lite`
+- `multirobot_map_merge`
+
+Version of package(s) in repository `m_explore`:
+
+- upstream repository: https://github.com/hrnr/m-explore.git
+- release repository: https://github.com/hrnr/m-explore-release.git
+- rosdistro version: `2.0.0-1`
+- old version: `2.0.0-1`
+- new version: `2.1.0-0`
+
+Versions of tools used:
+
+- bloom version: `0.6.1`
+- catkin_pkg version: `0.3.8`
+- rosdep version: `0.11.8`
+- rosdistro version: `0.6.2`
+- vcstools version: `0.1.39`
+
+
 ## m_explore (kinetic) - 2.0.0-1
 
 The packages in the `m_explore` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release m_explore --track kinetic --rosdistro kinetic --new-track` on `Sun, 26 Mar 2017 18:36:51 -0000`
