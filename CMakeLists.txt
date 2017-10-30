@@ -14,7 +14,6 @@ find_package(catkin REQUIRED COMPONENTS
   tf
   costmap_2d
   actionlib
-  navfn
 )
 
 catkin_package()
@@ -38,7 +37,7 @@ include_directories(
 )
 
 add_executable(explore
-  src/explore_frontier.cpp
+  src/frontier_search.cpp
   src/costmap_client.cpp
   src/explore.cpp
 )
