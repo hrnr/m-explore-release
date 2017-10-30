@@ -2,6 +2,10 @@
 Changelog for package multirobot_map_merge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.1.0 (2017-10-30)
+------------------
+* no major changes. Released together with explore_lite.
+
 2.0.0 (2017-03-26)
 ------------------
 * map_merge: upgrade to package format 2
