@@ -1,0 +1,52 @@
+ros-lunar-explore-lite (2.1.1-0stretch) stretch; urgency=high
+
+  * explore: fix min_frontier_size bug
+    * min_frontier_size parameter was not used to at all
+    * adjust min_frontier size filtering according to map resolution
+  * fix bugs in CMakeLists.txt
+    * install nodes in packages, so they get shipped in debian packages. fixes #11 <https://github.com/hrnr/m-explore/issues/11>
+  * explore: update documentation
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Fri, 15 Dec 2017 23:00:00 -0000
+
+ros-lunar-explore-lite (2.1.0-0stretch) stretch; urgency=high
+
+  * explore: get rid of boost
+  * explore: rework launchfiles
+  * new visualisation of frontiers
+  * remove navfn library from dependencies
+  * use frontier seach algorithm from Paul Bovbel
+    * much better than previous version of search
+    * https://github.com/paulbovbel/frontier_exploration.git
+  * fix deadlock in explore
+    * reworked expore to use timer instead of separate thread for replanning
+    * fix deadlock occuring between makePlan and goal reached callback
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Sun, 29 Oct 2017 23:00:00 -0000
+
+ros-lunar-explore-lite (2.0.0-0stretch) stretch; urgency=high
+
+  * explore: migrate to package format 2
+  * explore: remove internal version of navfn_ros
+    * my changes are included in the ros since kinetic
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Sat, 25 Mar 2017 23:00:00 -0000
+
+ros-lunar-explore-lite (1.0.1-0stretch) stretch; urgency=high
+
+  * update documentation
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Fri, 24 Mar 2017 23:00:00 -0000
+
+ros-lunar-explore-lite (1.0.0-0stretch) stretch; urgency=high
+
+  * initial release
+  * Contributors: Jiri Horner, duhadway-bosch, pitzer
+
+ -- Jiri Horner <laeqten@gmail.com>  Tue, 10 May 2016 22:00:00 -0000
+
+
