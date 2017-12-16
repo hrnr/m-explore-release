@@ -1,0 +1,12 @@
+Source: ros-kinetic-multirobot-map-merge
+Section: misc
+Priority: extra
+Maintainer: Jiri Horner <laeqten@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin, ros-kinetic-geometry-msgs, ros-kinetic-map-msgs, ros-kinetic-nav-msgs, ros-kinetic-opencv3, ros-kinetic-roscpp, ros-kinetic-roslaunch, ros-kinetic-rosunit, ros-kinetic-tf2-geometry-msgs
+Homepage: http://wiki.ros.org/multirobot_map_merge
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-multirobot-map-merge
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-geometry-msgs, ros-kinetic-map-msgs, ros-kinetic-nav-msgs, ros-kinetic-opencv3, ros-kinetic-roscpp, ros-kinetic-tf2-geometry-msgs
+Description: Merging multiple maps without knowledge of initial positions of robots.
