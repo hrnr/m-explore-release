@@ -59,20 +59,19 @@ Explore::Explore()
   , last_markers_count_(0)
 {
   double timeout;
-  int min_frontier_size;
+  double min_frontier_size;
   private_nh_.param("planner_frequency", planner_frequency_, 1.0);
   private_nh_.param("progress_timeout", timeout, 30.0);
   progress_timeout_ = ros::Duration(timeout);
   private_nh_.param("visualize", visualize_, false);
   private_nh_.param("potential_scale", potential_scale_, 1e-3);
-  // TODO: set this back to 0.318 once getOrientationChange is fixed
   private_nh_.param("orientation_scale", orientation_scale_, 0.0);
   private_nh_.param("gain_scale", gain_scale_, 1.0);
-  private_nh_.param("min_frontier_size", min_frontier_size, 10);
+  private_nh_.param("min_frontier_size", min_frontier_size, 0.5);
 
   search_ = frontier_exploration::FrontierSearch(costmap_client_.getCostmap(),
                                                  potential_scale_, gain_scale_,
-                                                 size_t(min_frontier_size));
+                                                 min_frontier_size);
 
   if (visualize_) {
     marker_array_publisher_ =
@@ -181,6 +180,7 @@ void Explore::makePlan()
 {
   // find frontiers
   auto pose = costmap_client_.getRobotPose();
+  // get frontiers sorted according to cost
   auto frontiers = search_.searchFrom(pose.position);
   ROS_DEBUG("found %lu frontiers", frontiers.size());
   for (size_t i = 0; i < frontiers.size(); ++i) {
@@ -207,7 +207,6 @@ void Explore::makePlan()
     stop();
     return;
   }
-  // todo sort frontiers
   geometry_msgs::Point target_position = frontier->centroid;
 
   // time out if we are not making any progress
