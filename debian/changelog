@@ -1,0 +1,56 @@
+ros-melodic-multirobot-map-merge (2.1.2-1bionic) bionic; urgency=high
+
+  * support for ROS Melodic
+  * bugfix: zero resolution of the merged grid for known initial posiiton
+  * bugfix: estimation_confidence parameter had no effect
+  * map_merge: set origin of merged grid in its centre
+  * map_merge: add new launch file
+    * map_merge with 2 maps served by map_server
+  * bugfix: ensure that we never output map with 0 resolution
+  * bugfix: nullptr derefence while setting resolution of output grid
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Fri, 01 Jan 2021 23:00:00 -0000
+
+ros-melodic-multirobot-map-merge (2.1.1-1bionic) bionic; urgency=high
+
+  * fix bugs in CMakeLists.txt: install nodes in packages, so they get shipped in debian packages. fixes #11 <https://github.com/hrnr/m-explore/issues/11>
+  * map_merge: add bibtex to wiki page
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Fri, 15 Dec 2017 23:00:00 -0000
+
+ros-melodic-multirobot-map-merge (2.1.0-1bionic) bionic; urgency=high
+
+  * no major changes. Released together with explore_lite.
+
+ -- Jiri Horner <laeqten@gmail.com>  Sun, 29 Oct 2017 23:00:00 -0000
+
+ros-melodic-multirobot-map-merge (2.0.0-1bionic) bionic; urgency=high
+
+  * map_merge: upgrade to package format 2
+  * node completely rewritten based on my work included in opencv
+  * uses more reliable features by default -> more robust merging
+  * known_init_poses is now by default false to make it easy to start for new users
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Sat, 25 Mar 2017 23:00:00 -0000
+
+ros-melodic-multirobot-map-merge (1.0.1-1bionic) bionic; urgency=high
+
+  * map_merge: use inverted tranform
+    * transform needs to be inverted before using
+  * map_merge: change package description
+    * we support merging with unknown initial positions
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Fri, 24 Mar 2017 23:00:00 -0000
+
+ros-melodic-multirobot-map-merge (1.0.0-1bionic) bionic; urgency=high
+
+  * initial release
+  * Contributors: Jiri Horner
+
+ -- Jiri Horner <laeqten@gmail.com>  Tue, 10 May 2016 22:00:00 -0000
+
+
