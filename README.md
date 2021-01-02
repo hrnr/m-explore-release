@@ -1,3 +1,28 @@
+## m_explore (melodic) - 2.1.2-1
+
+The packages in the `m_explore` repository were released into the `melodic` distro by running `/usr/bin/bloom-release m_explore --rosdistro melodic` on `Sat, 02 Jan 2021 01:14:04 -0000`
+
+These packages were released:
+- `explore_lite`
+- `multirobot_map_merge`
+
+Version of package(s) in repository `m_explore`:
+
+- upstream repository: https://github.com/hrnr/m-explore.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `2.1.2-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.0`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.20.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## m_explore (lunar) - 2.1.1-0
 
 The packages in the `m_explore` repository were released into the `lunar` distro by running `/usr/bin/bloom-release m_explore --track lunar --rosdistro lunar` on `Sat, 16 Dec 2017 14:37:35 -0000`
