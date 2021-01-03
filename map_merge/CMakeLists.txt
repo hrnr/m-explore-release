@@ -14,9 +14,9 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(Boost REQUIRED COMPONENTS thread)
 
 # OpenCV is required for merging without initial positions
-find_package(OpenCV 3 REQUIRED)
-if("${OpenCV_VERSION}" VERSION_LESS "3.0")
-  message(FATAL_ERROR "This package needs OpenCV >= 3.0")
+find_package(OpenCV REQUIRED)
+if("${OpenCV_VERSION}" VERSION_LESS "4.0")
+  message(FATAL_ERROR "This package needs OpenCV >= 4.0")
 endif()
 
 ################################################
@@ -32,7 +32,10 @@ catkin_package(
     geometry_msgs
     map_msgs
     nav_msgs
+    roscpp
     tf2_geometry_msgs
+  DEPENDS
+    OpenCV
 )
 
 ###########
