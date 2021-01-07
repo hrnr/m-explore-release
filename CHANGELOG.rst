@@ -2,6 +2,18 @@
 Changelog for package multirobot_map_merge
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.1.4 (2021-01-07)
+------------------
+* use C++14
+* support both OpenCV 3 and OpenCV 4 (support Debian Buster)
+* Contributors: Jiri Horner
+
+2.1.3 (2021-01-03)
+------------------
+* add missing dependencies to catkin_package calls
+* update map_merge for OpenCV 4
+* Contributors: Jiri Horner
+
 2.1.2 (2021-01-02)
 ------------------
 * support for ROS Melodic
