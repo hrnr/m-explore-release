@@ -2,6 +2,16 @@
 Changelog for package explore_lite
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.1.4 (2021-01-07)
+------------------
+* use C++14
+* Contributors: Jiri Horner
+
+2.1.3 (2021-01-03)
+------------------
+* add missing dependencies to catkin_package calls
+* Contributors: Jiri Horner
+
 2.1.2 (2021-01-02)
 ------------------
 * support for ROS Melodic
